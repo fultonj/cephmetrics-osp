@@ -109,7 +109,7 @@ openstack server create --flavor $FLAVOR_NAME --image $IMAGE_NAME \
                         --nic port-id=$PRIV_PORT_ID \
                         --nic port-id=$PROVIDER_PORT_ID \
                         --security-group $SEC_GROUP_NAME \
-                        --user-data /tmp/user-data.txt
+                        --user-data /tmp/user-data.txt \
                         --wait $SERVER_NAME
 
 openstack floating ip create --port $PRIV_PORT_ID --floating-ip-address $FLOAT_IP $PUB_NET_NAME
