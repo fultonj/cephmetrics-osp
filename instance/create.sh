@@ -92,6 +92,7 @@ chmod 600 ~/$KEYPAIR_NAME.pem
 # Assemble the user-data
 # FIXME: document why we need this
 cat << USER_DATA > /tmp/user-data.txt
+#!/usr/bin/env bash
 cat << IFCFG > /etc/sysconfig/network-scripts/ifcfg-eth1
 DEVICE="eth1"
 ONBOOT=yes
