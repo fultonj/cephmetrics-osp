@@ -90,7 +90,10 @@ openstack keypair create $KEYPAIR_NAME > ~/$KEYPAIR_NAME.pem
 chmod 600 ~/$KEYPAIR_NAME.pem
 
 # Assemble the user-data
-# FIXME: document why we need this
+# This is necessary because up until cloud-init 18.3, network configuration
+# data sent by OpenStack wasn't used. This meant that only one NIC was usable.
+# RHEL 7.6 is slated to ship 18.2.
+# https://github.com/cloud-init/cloud-init/commit/cd1de5f
 cat << USER_DATA > /tmp/user-data.txt
 #!/usr/bin/env bash
 cat << IFCFG > /etc/sysconfig/network-scripts/ifcfg-eth1
